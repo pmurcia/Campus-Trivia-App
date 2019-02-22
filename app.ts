@@ -8,8 +8,8 @@ const app: express.Application = express();
 
 app.get('/', (req, res) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  Trivia.getQuestions(1,'Posslitics').then(questions => {
+  res.setHeader('Content-Type', 'text/json; charset=utf-8');
+  Trivia.getQuestions(1,"Entertainment: Japanese Anime & Manga").then(questions => {
     console.log(questions);
     res.end(JSON.stringify(questions));
   }).catch(err => {

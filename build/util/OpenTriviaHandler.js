@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var request_1 = __importDefault(require("request"));
 var TriviaQuestion_1 = require("../models/TriviaQuestion");
+var shuffle = require('shuffle-array');
 var OpenTriviaHandler = /** @class */ (function () {
     function OpenTriviaHandler() {
     }
@@ -50,7 +51,8 @@ var OpenTriviaHandler = /** @class */ (function () {
                         if (typeof (value) != "string") {
                             // It is an array
                             var incorrect = value.map(function (answer) { return Util.decodeBase64(answer); });
-                            question['answers'] = incorrect.concat([question['correct_answer']]);
+                            var unshuffled = incorrect.concat([question['correct_answer']]);
+                            question['answers'] = shuffle(unshuffled);
                             // Remove incorrect answers from object
                             delete question['incorrect_answers'];
                         }

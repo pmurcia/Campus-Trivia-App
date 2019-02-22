@@ -1,6 +1,8 @@
 import request from 'request';
 import { TriviaQuestion, TriviaCategory, TriviaDifficulty, TriviaEncode, TriviaType } from '../models/TriviaQuestion';
 
+const shuffle = require('shuffle-array');
+
 class OpenTriviaHandler {
     public static getQuestions = (amount: number, 
                     category: string = '', 
@@ -44,7 +46,8 @@ class OpenTriviaHandler {
                         if(typeof(value) != "string") {
                             // It is an array
                             let incorrect = (value as any[]).map((answer: string) => Util.decodeBase64(answer));
-                            question['answers'] = [...incorrect, question['correct_answer']];
+                            let unshuffled = [...incorrect, question['correct_answer']];
+                            question['answers'] = shuffle(unshuffled);
 
                             // Remove incorrect answers from object
                             delete question['incorrect_answers']

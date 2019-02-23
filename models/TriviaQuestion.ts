@@ -49,8 +49,8 @@ class TriviaQuestion {
                 public correct_answer: string,
                 public answers: string[]) {}
 
-    public ToAppInventor() {
-        return Object.entries(this);
+    public toAppInventor() {
+        return Object.values(this);
     }
 }
 

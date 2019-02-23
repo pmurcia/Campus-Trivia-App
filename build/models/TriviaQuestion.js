@@ -57,7 +57,7 @@ var TriviaQuestion = /** @class */ (function () {
         this.answers = answers;
     }
     TriviaQuestion.prototype.ToAppInventor = function () {
-        return Object.entries(this);
+        return Object.values(this);
     };
     return TriviaQuestion;
 }());

@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.setHeader('Content-Type', 'text/json; charset=utf-8');
   OpenTriviaDB.getQuestions(2).then((questions) => {
     console.log(questions);
-    let mapped = questions.map(q => q.ToAppInventor())
+    let mapped = questions.map(q => q.toAppInventor())
     res.end(JSON.stringify(mapped));
   }).catch(err => {
     console.log(err);

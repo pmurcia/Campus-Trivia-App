@@ -6,9 +6,10 @@ var app = express();
 app.get('/', function (req, res) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/json; charset=utf-8');
-    OpenTriviaHandler_1.OpenTriviaHandler.getQuestions(1, "Entertainment: Japanese Anime & Manga").then(function (questions) {
+    OpenTriviaHandler_1.OpenTriviaHandler.getQuestions(2).then(function (questions) {
         console.log(questions);
-        res.end(JSON.stringify(questions));
+        var mapped = questions.map(function (q) { return q.ToAppInventor(); });
+        res.end(JSON.stringify(mapped));
     }).catch(function (err) {
         console.log(err);
         res.end(err);

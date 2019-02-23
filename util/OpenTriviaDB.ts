@@ -3,7 +3,7 @@ import { TriviaQuestion, TriviaCategory, TriviaDifficulty, TriviaEncode, TriviaT
 
 const shuffle = require('shuffle-array');
 
-class OpenTriviaHandler {
+class OpenTriviaDB {
     public static getQuestions = (amount: number, 
                     category: string = '', 
                     difficulty: string = '', 
@@ -58,7 +58,12 @@ class OpenTriviaHandler {
                     })
 
                     // Return the modified object
-                    return question;
+                    return new TriviaQuestion(question['category'],
+                                              question['type'],
+                                              question['difficulty'],
+                                              question['question'],
+                                              question['correct_answer'],
+                                              question['answers']);
                 });
 
                 // The questions have been parsed
@@ -66,7 +71,7 @@ class OpenTriviaHandler {
             })
         });
 
-        return promise
+        return promise as Promise<TriviaQuestion[]>
     }
 }
 
@@ -76,4 +81,4 @@ class Util {
     }
 }
 
-export { OpenTriviaHandler }
+export { OpenTriviaDB }

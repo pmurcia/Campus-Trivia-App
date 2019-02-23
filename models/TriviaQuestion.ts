@@ -42,16 +42,16 @@ enum TriviaEncode {
 }
 
 class TriviaQuestion {
-    constructor(category: TriviaCategory,
-                type: TriviaType,
-                difficulty: TriviaDifficulty,
-                question: string,
-                correct_answer: string,
-                answers: string[]) {
+    constructor(public category: TriviaCategory,
+                public type: TriviaType,
+                public difficulty: TriviaDifficulty,
+                public question: string,
+                public correct_answer: string,
+                public answers: string[]) {}
 
+    public ToAppInventor() {
+        return Object.entries(this);
     }
 }
-
-console.log(TriviaCategory["Entertainment: Board Games"]);
 
 export { TriviaQuestion, TriviaCategory, TriviaDifficulty, TriviaEncode, TriviaType };

@@ -1,17 +1,18 @@
 import express = require('express');
 import https = require('https');
 
-import { OpenTriviaHandler as Trivia } from './util/OpenTriviaHandler';
-import { TriviaCategory } from './models/TriviaQuestion';
+import { OpenTriviaDB } from './util/OpenTriviaDB';
+import { TriviaCategory, TriviaQuestion } from './models/TriviaQuestion';
 
 const app: express.Application = express();
 
 app.get('/', (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/json; charset=utf-8');
-  Trivia.getQuestions(1,"Entertainment: Japanese Anime & Manga").then(questions => {
+  OpenTriviaDB.getQuestions(2).then((questions) => {
     console.log(questions);
-    res.end(JSON.stringify(questions));
+    let mapped = questions.map(q => q.ToAppInventor())
+    res.end(JSON.stringify(mapped));
   }).catch(err => {
     console.log(err);
     res.end(err)

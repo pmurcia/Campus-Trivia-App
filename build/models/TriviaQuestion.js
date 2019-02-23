@@ -49,8 +49,16 @@ var TriviaEncode;
 exports.TriviaEncode = TriviaEncode;
 var TriviaQuestion = /** @class */ (function () {
     function TriviaQuestion(category, type, difficulty, question, correct_answer, answers) {
+        this.category = category;
+        this.type = type;
+        this.difficulty = difficulty;
+        this.question = question;
+        this.correct_answer = correct_answer;
+        this.answers = answers;
     }
+    TriviaQuestion.prototype.ToAppInventor = function () {
+        return Object.entries(this);
+    };
     return TriviaQuestion;
 }());
 exports.TriviaQuestion = TriviaQuestion;
-console.log(TriviaCategory["Entertainment: Board Games"]);

@@ -62,7 +62,7 @@ var OpenTriviaHandler = /** @class */ (function () {
                         }
                     });
                     // Return the modified object
-                    return question;
+                    return new TriviaQuestion_1.TriviaQuestion(question['category'], question['type'], question['difficulty'], question['question'], question['correct_answer'], question['answers']);
                 });
                 // The questions have been parsed
                 resolve(parsedQuestions);

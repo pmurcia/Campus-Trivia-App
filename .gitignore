@@ -2,6 +2,9 @@
 # Edit at https://www.gitignore.io/?templates=node
 
 ### Node ###
+# Build folder
+build/
+
 # Logs
 logs
 *.log

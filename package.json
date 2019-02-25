@@ -2,7 +2,7 @@
   "name": "trivia",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "build/app.js",
   "scripts": {
     "build-ts": "tsc",
     "postinstall": "npm run build-ts",

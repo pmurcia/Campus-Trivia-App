@@ -4,6 +4,7 @@ import https = require('https');
 import { OpenTriviaDB } from './util/OpenTriviaDB';
 import { TriviaCategory, TriviaQuestion } from './models/TriviaQuestion';
 
+const PORT = process.env.PORT || '5000';
 const app: express.Application = express();
 
 app.get('/', (req, res) => {
@@ -19,6 +20,6 @@ app.get('/', (req, res) => {
   })
 });
 
-app.listen(3000, () => {
-  console.log(`Server running at http://localhost:3000/`);
-});
+app.listen(PORT, () => 
+  console.log('Example app listening on port ${PORT}!')
+);

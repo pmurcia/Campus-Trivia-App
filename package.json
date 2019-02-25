@@ -17,5 +17,6 @@
     "request": "^2.88.0",
     "shuffle-array": "^1.0.1",
     "ts-node-dev": "^1.0.0-pre.32"
-  }
+  },
+  "devDependencies": {}
 }

@@ -6,10 +6,10 @@ import { TriviaCategory, TriviaQuestion } from './models/TriviaQuestion';
 
 const app: express.Application = express();
 
-app.get('/', (req, res) => {
+app.get('/trivia', (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/json; charset=utf-8');
-  OpenTriviaDB.getQuestions(2).then((questions) => {
+  OpenTriviaDB.getQuestions(5).then((questions) => {
     console.log(questions);
     let mapped = questions.map(q => q.toAppInventor())
     res.end(JSON.stringify(mapped));

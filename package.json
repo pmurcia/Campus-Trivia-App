@@ -2,11 +2,14 @@
   "name": "trivia",
   "version": "1.0.0",
   "description": "",
-  "main": "app.ts",
+  "main": "app.js",
   "scripts": {
-    "tsc": "tsc",
-    "dev": "ts-node-dev --respawn --transpileOnly ./app/app.ts",
-    "prod": "tsc && node ./build/app.js"
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
+    "start": "npm run serve",
+    "serve": "node build/app.js",
+    "watch-node": "nodemon build/app.js",
+    "watch-ts": "tsc -w"
   },
   "author": "",
   "license": "ISC",

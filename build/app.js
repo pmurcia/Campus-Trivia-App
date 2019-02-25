@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var OpenTriviaDB_1 = require("./util/OpenTriviaDB");
 var app = express();
-app.get('/trivia', function (req, res) {
+app.get('/', function (req, res) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/json; charset=utf-8');
     OpenTriviaDB_1.OpenTriviaDB.getQuestions(5).then(function (questions) {

@@ -6,7 +6,7 @@ import { TriviaCategory, TriviaQuestion } from './models/TriviaQuestion';
 
 const app: express.Application = express();
 
-app.get('/trivia', (req, res) => {
+app.get('/', (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/json; charset=utf-8');
   OpenTriviaDB.getQuestions(5).then((questions) => {

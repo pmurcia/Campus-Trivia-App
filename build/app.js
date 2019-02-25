@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var OpenTriviaDB_1 = require("./util/OpenTriviaDB");
 var app = express();
-app.get('/', function (req, res) {
+app.get('/trivia', function (req, res) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/json; charset=utf-8');
-    OpenTriviaDB_1.OpenTriviaDB.getQuestions(2).then(function (questions) {
+    OpenTriviaDB_1.OpenTriviaDB.getQuestions(5).then(function (questions) {
         console.log(questions);
         var mapped = questions.map(function (q) { return q.toAppInventor(); });
         res.end(JSON.stringify(mapped));

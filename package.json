@@ -19,7 +19,8 @@
     "express": "^4.16.4",
     "request": "^2.88.0",
     "shuffle-array": "^1.0.1",
-    "ts-node-dev": "^1.0.0-pre.32"
+    "ts-node-dev": "^1.0.0-pre.32",
+    "typescript": "^3.3.3333"
   },
   "devDependencies": {}
 }

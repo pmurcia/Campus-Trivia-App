@@ -4,11 +4,11 @@ import { TriviaQuestion, TriviaCategory, TriviaDifficulty, TriviaEncode, TriviaT
 const shuffle = require('shuffle-array');
 
 class OpenTriviaDB {
-    public static getQuestions = (amount: number, 
+    public static getQuestions(amount: number, 
                     category: string = '', 
                     difficulty: string = '', 
                     type: string = '', 
-                    encode: string = 'base64') => {
+                    encode: string = 'base64') {
         // Check arguments
         let amountChecked = amount <= 50  ? amount : 50;    // Maximum 50 results
         let categoryChecked = Object.keys(TriviaCategory).filter(k => isNaN(Number(k))).includes(category) ? Object.entries(TriviaCategory).filter(([k,v]) => k == category)[0][1] : '';

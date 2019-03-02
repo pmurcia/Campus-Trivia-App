@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
-var OpenTriviaDB_1 = require("./util/OpenTriviaDB");
+var TriviaController_1 = require("./controllers/TriviaController");
+// Initialization variables
 var PORT = process.env.PORT || '5000';
 var app = express();
-console.log(PORT);
-app.get('/', function (req, res) {
+// Routers
+var triviaRouter = TriviaController_1.TriviaController.router;
+app.get('/trivia', function (req, res) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/json; charset=utf-8');
-    OpenTriviaDB_1.OpenTriviaDB.getQuestions(5).then(function (questions) {
-        //console.log(questions);
-        var mapped = questions.map(function (q) { return q.toAppInventor(); });
-        res.end(JSON.stringify(mapped));
+    var amount = Number(req.query['amount']);
+    TriviaController_1.TriviaController.getQuestions(amount).then(function (questions) {
+        res.end(questions);
     }).catch(function (err) {
-        console.log(err);
         res.end(err);
     });
 });

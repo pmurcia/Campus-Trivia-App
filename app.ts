@@ -1,20 +1,21 @@
 import express = require('express');
+import { TriviaController } from './controllers/TriviaController'
 
-import { OpenTriviaDB } from './util/OpenTriviaDB';
+// Initialization variables
+const PORT = process.env.PORT || '5000'
+const app: express.Application = express()
 
-const PORT = process.env.PORT || '5000';
-const app: express.Application = express();
-console.log(PORT)
+// Routers
+const triviaRouter = TriviaController.router
 
-app.get('/', (req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/json; charset=utf-8');
-    OpenTriviaDB.getQuestions(5).then((questions) => {
-        //console.log(questions);
-        let mapped = questions.map(q => q.toAppInventor())
-        res.end(JSON.stringify(mapped));
-    }).catch(err => {
-        console.log(err);
+app.get('/trivia', (req, res) => {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/json; charset=utf-8')
+    let amount = Number(req.query['amount'])
+
+    TriviaController.getQuestions(amount).then((questions) => {
+        res.end(questions)
+    }).catch((err) => {
         res.end(err)
     })
 });

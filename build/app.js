@@ -18,5 +18,5 @@ app.get('/trivia', function (req, res) {
     });
 });
 app.listen(PORT, function () {
-    return console.log('Example app listening on port ${PORT}!');
+    return console.log('Example app listening on port ' + PORT);
 });
